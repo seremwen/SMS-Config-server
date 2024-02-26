@@ -1,15 +1,31 @@
 
-server.port: 8101
+server:
+  port: 8101
 spring:
-  application.name: sms-config-server
-  cloud.config:
-    server.git:
-      uri: https://github.com/seremwen/SMS-Config-Files.git
-      default-label: master
+   application:
+    name: sms-config-server
+   cloud:
+    config:
+      server:
+       git:
+         uri: https://github.com/seremwen/SMS-Config-Files
+         default-label: main
+         skip-ssl-validation: true
+         clone-on-start: true
+
 eureka:
   client:
+    registerWithEureka: true
+    fetchRegistry: true
     serviceUrl:
-      defaultZone: http://localhost:8001/eureka/
-    registryFetchIntervalSeconds: 1
+        defaultZone: http://localhost:8761/eureka/
+        registryFetchIntervalSeconds: 1
   instance:
-    leaseRenewalIntervalInSeconds: 1
+    hostname: localhost
+
+#management:
+#   endpoints:
+#     web:
+#      exposure:
+#        include: *
+
