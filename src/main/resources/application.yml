@@ -1,6 +1,6 @@
 
 server:
-  port: 8101
+  port: 7000
 spring:
    application:
     name: sms-config-server
